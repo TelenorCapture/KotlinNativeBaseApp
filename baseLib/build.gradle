@@ -1,0 +1,89 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-multiplatform'
+apply plugin: 'kotlinx-serialization'
+
+repositories {
+    jcenter()
+    google()
+    mavenCentral()
+    gradlePluginPortal()
+    maven { url "https://kotlin.bintray.com/kotlinx" }
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+
+kotlin {
+    targets {
+        fromPreset(presets.android, 'android')
+
+        final def iosPreset = System.getenv('SDK_NAME')?.startsWith('iphoneos') \
+                              ? presets.iosArm64 : presets.iosX64
+
+        fromPreset(iosPreset, 'ios') {
+            binaries {
+                framework {
+                    embedBitcode('disable')
+                }
+            }
+        }
+    }
+
+    sourceSets {
+        commonMain {
+            dependencies {
+                api 'org.jetbrains.kotlin:kotlin-stdlib-common'
+                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.11.0"
+            }
+        }
+        androidMain {
+            dependencies {
+                api 'org.jetbrains.kotlin:kotlin-stdlib'
+                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.11.0"
+                implementation 'co.touchlab:sqliter:0.6.2'
+            }
+        }
+        iosMain {
+            dependencies {
+                api 'org.jetbrains.kotlin:kotlin-stdlib'
+                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:0.11.0"
+                implementation 'co.touchlab:sqliter:0.6.2'
+            }
+        }
+    }
+}
+
+task packForXCode(type: Sync) {
+    final String mode = project.findProperty('XCODE_CONFIGURATION')?.toUpperCase() ?: project.findProperty('kotlin.build.type') ?: 'DEBUG'
+    final def framework = kotlin.targets.ios.binaries.getFramework(mode)
+    final File frameworkDir = new File(buildDir, 'xcode-frameworks')
+
+    inputs.property 'mode', mode
+    dependsOn framework.linkTask
+
+    from { framework.outputFile.parentFile }
+    into frameworkDir
+
+    doLast {
+        new File(frameworkDir, 'gradlew').with {
+            text = "#!/bin/bash\nexport 'JAVA_HOME=${System.getProperty('java.home')}'\ncd '${rootProject.rootDir}'\n./gradlew \$@\n"
+            setExecutable(true)
+        }
+    }
+}
+tasks.build.dependsOn packForXCode
+
+// workaround for https://youtrack.jetbrains.com/issue/KT-27170
+configurations {
+    compileClasspath
+}
