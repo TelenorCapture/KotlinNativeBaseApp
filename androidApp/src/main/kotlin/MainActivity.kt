@@ -10,5 +10,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Log.d("app", "Platform name: " + tsl.baseLib.platformName())
         Log.d("app", "JSON: " + tsl.baseLib.generateJson())
+        tsl.baseLib.useTestDatabase()
     }
 }
