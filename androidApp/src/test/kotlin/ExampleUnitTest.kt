@@ -1,4 +1,4 @@
-package tsl.spoor
+package tsl.androidApp
 
 import org.junit.Test
 

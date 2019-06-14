@@ -50,7 +50,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		00FDBC2622B1842F00C87FA5 /* spoor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spoor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		00FDBC2622B1842F00C87FA5 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00FDBC2922B1842F00C87FA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00FDBC2B22B1842F00C87FA5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		00FDBC2E22B1842F00C87FA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 		00FDBC2722B1842F00C87FA5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				00FDBC2622B1842F00C87FA5 /* spoor.app */,
+				00FDBC2622B1842F00C87FA5 /* TestApp.app */,
 				00FDBC3A22B1843100C87FA5 /* iosAppTests.xctest */,
 				00FDBC4522B1843100C87FA5 /* iosAppUITests.xctest */,
 			);
@@ -173,7 +173,7 @@
 			);
 			name = iosApp;
 			productName = iosApp;
-			productReference = 00FDBC2622B1842F00C87FA5 /* spoor.app */;
+			productReference = 00FDBC2622B1842F00C87FA5 /* TestApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 		00FDBC3922B1843100C87FA5 /* iosAppTests */ = {
@@ -493,8 +493,8 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_CFLAGS = "-Wno-nullability";
-				PRODUCT_BUNDLE_IDENTIFIER = com.telenorsoftwarelab.spoor;
-				PRODUCT_NAME = spoor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.telenorsoftwarelab.TestApp;
+				PRODUCT_NAME = TestApp;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -512,8 +512,8 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_CFLAGS = "-Wno-nullability";
-				PRODUCT_BUNDLE_IDENTIFIER = com.telenorsoftwarelab.spoor;
-				PRODUCT_NAME = spoor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.telenorsoftwarelab.TestApp;
+				PRODUCT_NAME = TestApp;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

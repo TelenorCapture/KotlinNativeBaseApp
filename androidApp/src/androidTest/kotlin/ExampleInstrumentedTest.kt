@@ -1,4 +1,4 @@
-package tsl.spoor
+package tsl.androidApp
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("tsl.spoor", appContext.packageName)
+        assertEquals("tsl.androidApp", appContext.packageName)
     }
 }
