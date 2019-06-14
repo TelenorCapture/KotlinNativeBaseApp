@@ -9,7 +9,7 @@ import tsl.baseLib.Logger
 
 import java.util.Arrays
 
-class AndroidSqliteStmt(handle: AndroidSqliteHandle, query: String, hint: Int) : SqliteStmt {
+class AndroidSqliteStmt(handle: AndroidSqliteHandle, query: String, hint: QueryHint) : SqliteStmt {
     private val type: Int
     private val handle: AndroidSqliteHandle
     private val db: SQLiteDatabase
@@ -41,8 +41,8 @@ class AndroidSqliteStmt(handle: AndroidSqliteHandle, query: String, hint: Int) :
         try {
             this.type = when {
                 query.regionMatches(0, "SELECT", 0, 6, ignoreCase = true) -> when (hint) {
-                    SqliteHandle.HINT_SINGLE_LONG -> SIMPLE_LONG_SELECT
-                    SqliteHandle.HINT_SINGLE_TEXT -> SIMPLE_TEXT_SELECT
+                    QueryHint.SINGLE_LONG -> SIMPLE_LONG_SELECT
+                    QueryHint.SINGLE_TEXT -> SIMPLE_TEXT_SELECT
                     else -> CURSOR_SELECT
                 }
                 query.regionMatches(0, "INSERT", 0, 6, ignoreCase = true) -> INSERT

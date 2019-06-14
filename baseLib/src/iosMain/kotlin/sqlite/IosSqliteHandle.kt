@@ -66,7 +66,7 @@ class IosSqliteHandle(var db: CValuesRef<sqlite3>?) : SqliteHandle {
         }
     }
 
-    override fun prepare(query: String, hint: Int): SqliteStmt {
+    override fun prepare(query: String, hint: QueryHint): SqliteStmt {
         return prepare(query)
     }
 }

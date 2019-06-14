@@ -40,10 +40,10 @@ class AndroidSqliteHandle(val db: SQLiteDatabase) : SqliteHandle {
     }
 
     override fun prepare(query: String): SqliteStmt {
-        return AndroidSqliteStmt(this, query, SqliteHandle.HINT_DEFAULT)
+        return AndroidSqliteStmt(this, query, QueryHint.REGULAR)
     }
 
-    override fun prepare(query: String, hint: Int): SqliteStmt {
+    override fun prepare(query: String, hint: QueryHint): SqliteStmt {
         return AndroidSqliteStmt(this, query, hint)
     }
 

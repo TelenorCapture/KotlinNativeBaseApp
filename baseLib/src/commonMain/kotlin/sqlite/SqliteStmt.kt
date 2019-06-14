@@ -2,11 +2,19 @@ package tsl.baseLib.sqlite
 
 import kotlinx.io.core.Closeable
 
+enum class SqliteColumnType {
+    NULLTYPE, // "NULL" does not work when compiled to Obj-C
+    INTEGER,
+    FLOAT,
+    TEXT,
+    BLOB
+}
+
 interface SqliteStmt : Closeable {
     val columnCount: Int
-
     val lastRowId: Long
     val lastChangeCount: Int
+
     fun reset()
 
     fun bindNull(index: Int)
