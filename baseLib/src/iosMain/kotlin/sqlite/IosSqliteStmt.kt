@@ -3,7 +3,7 @@ package tsl.baseLib.sqlite
 import interop.*
 import kotlinx.cinterop.*
 import platform.posix.memcpy
-import tsl.baseLib.logger.Logger
+import tsl.baseLib.Logger
 
 class IosSqliteStmt(var stmt: CValuesRef<sqlite3_stmt>?) : SqliteStmt {
     override val columnCount: Int

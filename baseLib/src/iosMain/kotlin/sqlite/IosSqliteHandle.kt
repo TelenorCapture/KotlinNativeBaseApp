@@ -2,7 +2,7 @@ package tsl.baseLib.sqlite
 
 import interop.*
 import kotlinx.cinterop.*
-import tsl.baseLib.logger.Logger
+import tsl.baseLib.Logger
 
 internal fun makeException(db: CValuesRef<sqlite3>?): SqliteException {
     if (db == null) {

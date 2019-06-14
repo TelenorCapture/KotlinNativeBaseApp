@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteDoneException
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteStatement
-import tsl.baseLib.logger.Logger
+import tsl.baseLib.Logger
 
 import java.util.Arrays
 

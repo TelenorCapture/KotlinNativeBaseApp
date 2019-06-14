@@ -1,7 +1,7 @@
 package tsl.baseLib.sqlite
 
 import kotlinx.io.core.use
-import tsl.baseLib.logger.Logger
+import tsl.baseLib.Logger
 
 class SqliteVersion : Comparable<SqliteVersion> {
 

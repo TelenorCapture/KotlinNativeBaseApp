@@ -2,10 +2,22 @@ package tsl.baseLib
 
 import kotlinx.cinterop.*
 import platform.Foundation.NSFileManager
+import platform.Foundation.NSLog
 
 actual fun platformName(): String {
     return "iOS"
 }
+
+
+internal actual fun outputLogMessage(level: LogLevel, msg: String) {
+    NSLog("$level: $msg")
+}
+internal actual fun reportException(e: Throwable) {
+}
+internal actual fun getStackTrace(e: Throwable): String {
+    return ""
+}
+
 
 actual object FileSystem {
     actual fun exists(path: String): Boolean {

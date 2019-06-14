@@ -2,7 +2,7 @@ package tsl.baseLib.sqlite
 
 import kotlinx.io.core.use
 import tsl.baseLib.FileSystem
-import tsl.baseLib.logger.Logger
+import tsl.baseLib.Logger
 
 abstract class AbstractDatabase protected constructor(
     private val dbPath: String,

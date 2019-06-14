@@ -1,7 +1,7 @@
 package tsl.baseLib.sqlite
 
 import android.database.sqlite.*
-import tsl.baseLib.logger.Logger
+import tsl.baseLib.Logger
 
 class AndroidSqliteHandle(val db: SQLiteDatabase) : SqliteHandle {
     var modifiedCount: Int = 0
