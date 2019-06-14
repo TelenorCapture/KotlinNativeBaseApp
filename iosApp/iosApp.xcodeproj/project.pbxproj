@@ -64,6 +64,7 @@
 		00FDBC4922B1843100C87FA5 /* iosAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosAppUITests.swift; sourceTree = "<group>"; };
 		00FDBC4B22B1843100C87FA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00FDBC5822B1851500C87FA5 /* baseLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = baseLib.framework; path = "../baseLib/build/xcode-frameworks/baseLib.framework"; sourceTree = "<group>"; };
+		00FDBC5E22B3CB6200C87FA5 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +101,7 @@
 				00FDBC3D22B1843100C87FA5 /* iosAppTests */,
 				00FDBC4822B1843100C87FA5 /* iosAppUITests */,
 				00FDBC2722B1842F00C87FA5 /* Products */,
+				00FDBC5D22B3CB6100C87FA5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -142,6 +144,14 @@
 				00FDBC4B22B1843100C87FA5 /* Info.plist */,
 			);
 			path = iosAppUITests;
+			sourceTree = "<group>";
+		};
+		00FDBC5D22B3CB6100C87FA5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				00FDBC5E22B3CB6200C87FA5 /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -482,6 +492,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_CFLAGS = "-Wno-nullability";
 				PRODUCT_BUNDLE_IDENTIFIER = com.telenorsoftwarelab.spoor;
 				PRODUCT_NAME = spoor;
 				SWIFT_VERSION = 5.0;
@@ -500,6 +511,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_CFLAGS = "-Wno-nullability";
 				PRODUCT_BUNDLE_IDENTIFIER = com.telenorsoftwarelab.spoor;
 				PRODUCT_NAME = spoor;
 				SWIFT_VERSION = 5.0;

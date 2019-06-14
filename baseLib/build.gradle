@@ -34,6 +34,9 @@ kotlin {
                               ? presets.iosArm64 : presets.iosX64
 
         fromPreset(iosPreset, 'ios') {
+            compilations.main.cinterops {
+                interop
+            }
             binaries {
                 framework {
                     embedBitcode('disable')

@@ -4,17 +4,14 @@ import kotlinx.io.core.use
 import kotlinx.serialization.*
 import kotlinx.serialization.json.Json.Companion.stringify
 import tsl.baseLib.logger.Logger
-import tsl.baseLib.sqlite.AbstractDatabase
-import tsl.baseLib.sqlite.execute
-import tsl.baseLib.sqlite.expectStep
-import tsl.baseLib.sqlite.withTransaction
+import tsl.baseLib.sqlite.*
 
 @Serializable
-data class Data(val a: Int, val b: String = "42")
+data class TestData(val a: Int, val b: String = "42")
 
 fun generateJson(): String {
     @Suppress("EXPERIMENTAL_API_USAGE")
-    return stringify(Data.serializer(), Data(42))
+    return stringify(TestData.serializer(), TestData(42))
 }
 
 class TestDatabase(
@@ -38,9 +35,7 @@ class TestDatabase(
 
 fun useTestDatabase() {
     val db = TestDatabase(":memory:", 0)
-    db.open()
-    try {
-        val handle = db.handle
+    db.withOpen { handle ->
         handle.withTransaction {
             db.migrateToCurrentVersion()
             handle.execute("INSERT INTO test (key, data) VALUES (?, ?)", 1, 2)
@@ -50,7 +45,5 @@ fun useTestDatabase() {
                 Logger.debug("Found value: " + stmt.getInt(0))
             }
         }
-    } finally {
-        db.close()
     }
 }

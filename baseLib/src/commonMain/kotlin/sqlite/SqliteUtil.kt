@@ -2,6 +2,15 @@ package tsl.baseLib.sqlite
 
 import kotlinx.io.core.use
 
+fun AbstractDatabase.withOpen(func: (handle: SqliteHandle) -> Unit) {
+    this.open()
+    try {
+        func(this.handle)
+    } finally {
+        this.close()
+    }
+}
+
 fun SqliteHandle.execute(query: String, vararg params: Any?) {
     this.prepare(query).use { stmt ->
         var col = 1

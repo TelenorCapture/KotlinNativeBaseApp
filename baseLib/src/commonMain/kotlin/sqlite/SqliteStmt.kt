@@ -19,7 +19,7 @@ interface SqliteStmt : Closeable {
     fun clearBindings()
 
     fun step(): Boolean
-    fun getColumnType(column: Int): Int
+    fun getColumnType(column: Int): SqliteColumnType
     fun getColumnName(column: Int): String?
 
     fun isNull(column: Int): Boolean

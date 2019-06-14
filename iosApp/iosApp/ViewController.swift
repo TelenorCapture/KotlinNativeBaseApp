@@ -6,5 +6,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         print("Platform name: ", PlatformKt.platformName())
         print("JSON: ", TestKt.generateJson())
+        TestKt.useTestDatabase()
     }
 }

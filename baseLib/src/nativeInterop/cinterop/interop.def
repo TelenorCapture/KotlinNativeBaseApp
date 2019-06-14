@@ -1,0 +1,10 @@
+headers = sqlite3.h
+
+linkerOpts.ios = -lsqlite3
+linkerOpts.osx = -lsqlite3
+
+---
+
+int dummyFunction() {
+    return 123;
+}

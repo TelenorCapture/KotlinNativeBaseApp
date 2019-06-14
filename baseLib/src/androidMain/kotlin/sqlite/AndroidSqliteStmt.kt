@@ -253,19 +253,19 @@ class AndroidSqliteStmt(handle: AndroidSqliteHandle, query: String, hint: Int) :
         }
     }
 
-    override fun getColumnType(column: Int): Int {
+    override fun getColumnType(column: Int): SqliteColumnType {
         return when (type) {
             CURSOR_SELECT -> when (selectCursor!!.getType(column)) {
-                Cursor.FIELD_TYPE_NULL -> SqliteColumnType.NULL
+                Cursor.FIELD_TYPE_NULL -> SqliteColumnType.NULLTYPE
                 Cursor.FIELD_TYPE_INTEGER -> SqliteColumnType.INTEGER
                 Cursor.FIELD_TYPE_FLOAT -> SqliteColumnType.FLOAT
                 Cursor.FIELD_TYPE_STRING -> SqliteColumnType.TEXT
                 Cursor.FIELD_TYPE_BLOB -> SqliteColumnType.BLOB
-                else -> SqliteColumnType.NULL
+                else -> SqliteColumnType.NULLTYPE
             }
             SIMPLE_LONG_SELECT -> SqliteColumnType.INTEGER
             SIMPLE_TEXT_SELECT -> SqliteColumnType.TEXT
-            else -> Cursor.FIELD_TYPE_NULL
+            else -> SqliteColumnType.NULLTYPE
         }
     }
 
@@ -276,7 +276,7 @@ class AndroidSqliteStmt(handle: AndroidSqliteHandle, query: String, hint: Int) :
     }
 
     override fun isNull(column: Int): Boolean {
-        return getColumnType(column) == SqliteColumnType.NULL
+        return getColumnType(column) == SqliteColumnType.NULLTYPE
     }
 
     override fun isInteger(column: Int): Boolean {
